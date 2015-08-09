@@ -20,7 +20,7 @@ resources:
       items: 
         - http
     zone: {{ properties["zone"] }}
-    machineType: https://www.googleapis.com/compute/v1/projects/{{ properties["project-id"] }}/zones/{{ properties["zone"] }}/machineTypes/{{ properties["machine-type"] }}
+    machineType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/machineTypes/{{ properties["machine-type"] }}
     metadata:
       items:
       - key: sql-ip
@@ -35,9 +35,9 @@ resources:
       boot: true
       autoDelete: true
       initializeParams:
-        sourceImage: https://www.googleapis.com/compute/v1/projects/{{ properties["project-id"] }}/global/images/guestbook-2
+        sourceImage: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/global/images/{{ properties["image"] }}
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/{{ properties["project-id"] }}/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/global/networks/default
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT

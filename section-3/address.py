@@ -12,17 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-imports:
-- path: vm_instance.jinja
+"""Creates a Compute Engine address resource.
+"""
 
+import yaml
+
+
+def GenerateEmbeddableYaml(yaml_string):
+  # This function takes a string in YAML format and produces 
+  # an equivalent YAML representation that can be
+  # inserted into another YAML document.
+  yaml_object = yaml.load(yaml_string)
+  dumped_yaml = yaml.dump(yaml_object, default_flow_style=True)
+  return dumped_yaml
+
+
+def GenerateConfig(context):
+  return """
 resources:
-  - name: guestbook
-    type: vm_instance.jinja
+  - type: compute.v1.address
+    name: %(name)s
     properties:
-      zone: <your-default-zone>
-      image: guestbook-2
-      machine-type: n1-standard-1
-      bucket: <startup-scripts-bucket>
-      sql-ip: <guestbook-sql-ip-address>
-      password: <guestbook-sql-password>
-      nat-ip: <guestbook-external-ip-address>
+      region: %(region)s
+""" % {"name": context.env["name"],
+       "region": context.properties["region"]}

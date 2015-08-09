@@ -12,17 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-imports:
-- path: vm_instance.jinja
+{% set ADDRESS = env["deployment"] + "address-" %}
 
 resources:
-  - name: guestbook
-    type: vm_instance.jinja
-    properties:
-      zone: <your-default-zone>
-      image: guestbook-2
-      machine-type: n1-standard-1
-      bucket: <startup-scripts-bucket>
-      sql-ip: <guestbook-sql-ip-address>
-      password: <guestbook-sql-password>
-      nat-ip: <guestbook-external-ip-address>
+- name: env["deployment"]
+  type: vm_instance.py
+  properties:
+    zone: {{ properties["zone"] }}
+    machine: {{ properties["machine-type"] }}
+    sql_ip: {{ properties["sql-ip"] }}
+    sql_pw: {{ properties["sql-password"] }}
+    startup_script_bucket: {{ properties["startup-script"] }}
+    image: {{ properties["image"] }}
+    nat_IP: $(ref.{{ ADDRESS }}.address)
+
+- name: {{ ADDRESS }}
+  type: address.py
+  properties:
+    region: {{ properties["region"] }}

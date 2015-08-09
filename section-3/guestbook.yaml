@@ -20,9 +20,9 @@ resources:
     type: vm_instance.jinja
     properties:
       zone: <your-default-zone>
+      region: <your-default-region>
       image: guestbook-2
       machine-type: n1-standard-1
-      bucket: <startup-scripts-bucket>
+      startup-script-url: gs://<startup-scripts-bucket>/guestbook-start.sh
       sql-ip: <guestbook-sql-ip-address>
-      password: <guestbook-sql-password>
-      nat-ip: <guestbook-external-ip-address>
+      sql-password: <guestbook-sql-password>

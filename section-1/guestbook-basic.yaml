@@ -28,7 +28,7 @@ resources:
       - key: sql-pw
         value: <guestbook-sql-password>
       - key: startup-script-url
-        value: gs://<startup-scripts-bucket-url>/guestbook-start.sh
+        value: gs://<startup-scripts-bucket>/guestbook-start.sh
     disks:
     - deviceName: boot
       type: PERSISTENT
