@@ -71,6 +71,6 @@ resources:
        "machine": context.properties["machine"],
        "sql-address": context.properties["sql_ip"],
        "password": context.properties["sql_pw"],
-       "script": context.properties["startup_script_bucket"],
+       "script": context.properties["startup_script_url"],
        "vm-address": context.properties["nat_IP"],
        "image": context.properties["image"]}

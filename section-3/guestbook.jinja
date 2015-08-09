@@ -12,17 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{% set ADDRESS = env["deployment"] + "address-" %}
+{% set INSTANCE = env["deployment"] %}
+{% set ADDRESS = env["deployment"] + "-address" %}
 
 resources:
-- name: env["deployment"]
+- name: {{ INSTANCE }}
   type: vm_instance.py
   properties:
     zone: {{ properties["zone"] }}
     machine: {{ properties["machine-type"] }}
     sql_ip: {{ properties["sql-ip"] }}
     sql_pw: {{ properties["sql-password"] }}
-    startup_script_bucket: {{ properties["startup-script"] }}
+    startup_script_url: {{ properties["startup-script-url"] }}
     image: {{ properties["image"] }}
     nat_IP: $(ref.{{ ADDRESS }}.address)
 

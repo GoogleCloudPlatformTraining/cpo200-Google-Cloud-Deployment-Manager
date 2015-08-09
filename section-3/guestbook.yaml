@@ -13,11 +13,13 @@
 # limitations under the License.
 
 imports:
-- path: vm_instance.jinja
+- path: guestbook.jinja
+- path: vm_instance.py
+- path: address.py
 
 resources:
   - name: guestbook
-    type: vm_instance.jinja
+    type: guestbook.jinja
     properties:
       zone: <your-default-zone>
       region: <your-default-region>
