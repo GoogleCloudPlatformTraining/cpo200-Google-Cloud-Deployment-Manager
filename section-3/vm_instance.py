@@ -19,16 +19,16 @@ import yaml
 
 
 def GenerateEmbeddableYaml(yaml_string):
-  # This function takes a string in YAML format and produces 
-  # an equivalent YAML representation that can be
-  # inserted into another YAML document.
-  yaml_object = yaml.load(yaml_string)
-  dumped_yaml = yaml.dump(yaml_object, default_flow_style=True)
-  return dumped_yaml
+    # This function takes a string in YAML format and produces
+    # an equivalent YAML representation that can be
+    # inserted into another YAML document.
+    yaml_object = yaml.load(yaml_string)
+    dumped_yaml = yaml.dump(yaml_object, default_flow_style=True)
+    return dumped_yaml
 
 
 def GenerateConfig(context):
-  return """
+    return """
 resources:
   - type: compute.v1.instance
     name: %(name)s
@@ -74,3 +74,4 @@ resources:
        "script": context.properties["startup_script_url"],
        "vm-address": context.properties["nat_IP"],
        "image": context.properties["image"]}
+
