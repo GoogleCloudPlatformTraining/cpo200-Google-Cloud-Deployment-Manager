@@ -16,6 +16,7 @@ imports:
 - path: guestbook.jinja
 - path: vm_instance.py
 - path: address.py
+- path: sql_instance.py
 
 resources:
   - name: guestbook
@@ -26,5 +27,4 @@ resources:
       image: guestbook-2
       machine-type: n1-standard-1
       startup-script-url: gs://<startup-scripts-bucket>/guestbook-start.sh
-      sql-ip: <guestbook-sql-ip-address>
       sql-password: <guestbook-sql-password>

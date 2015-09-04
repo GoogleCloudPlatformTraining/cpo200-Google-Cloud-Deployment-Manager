@@ -14,6 +14,7 @@
 
 {% set INSTANCE = env["deployment"] %}
 {% set ADDRESS = env["deployment"] + "-address" %}
+{% set SQL_NAME = env["deployment"] + "-sql" %}
 
 resources:
 - name: {{ INSTANCE }}
@@ -21,7 +22,7 @@ resources:
   properties:
     zone: {{ properties["zone"] }}
     machine: {{ properties["machine-type"] }}
-    sql_ip: {{ properties["sql-ip"] }}
+    sql_ip: $(ref.{{ SQL_NAME }}.ipAddresses[0].ipAddress)
     sql_pw: {{ properties["sql-password"] }}
     startup_script_url: {{ properties["startup-script-url"] }}
     image: {{ properties["image"] }}
@@ -31,3 +32,10 @@ resources:
   type: address.py
   properties:
     region: {{ properties["region"] }}
+
+- name: {{ SQL_NAME }}
+  type: sql_instance.py
+  properties:
+    region: {{ properties["region"] }}
+    name: {{ SQL_NAME }}
+    address: $(ref.{{ ADDRESS }}.address)
