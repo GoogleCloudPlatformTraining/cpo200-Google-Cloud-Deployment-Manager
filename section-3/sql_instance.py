@@ -34,6 +34,7 @@ resources:
     name: %(name)s
     properties:
           region: %(sql-region)s
+          databaseVersion: "MYSQL_5_6"
           settings:
             tier: D1
             ipConfiguration:
