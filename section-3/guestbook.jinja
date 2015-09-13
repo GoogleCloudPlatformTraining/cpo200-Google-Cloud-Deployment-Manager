@@ -31,11 +31,11 @@ resources:
 - name: {{ ADDRESS }}
   type: address.py
   properties:
-    region: {{ properties["region"] }}
+    compute-region: {{ properties["compute-region"] }}
 
 - name: {{ SQL_NAME }}
   type: sql_instance.py
   properties:
-    region: {{ properties["region"] }}
+    sql-region: {{ properties["sql-region"] }}
     name: {{ SQL_NAME }}
     address: $(ref.{{ ADDRESS }}.address)

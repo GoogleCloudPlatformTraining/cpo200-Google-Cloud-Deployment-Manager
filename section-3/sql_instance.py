@@ -33,7 +33,7 @@ resources:
   - type: sqladmin.v1beta4.instance
     name: %(name)s
     properties:
-          region: %(region)s
+          region: %(sql-region)s
           settings:
             tier: D1
             ipConfiguration:
@@ -41,7 +41,7 @@ resources:
               authorizedNetworks:
               - name: guestbook
                 value: %(address)s
-""" % {"region": context.properties["region"],
+""" % {"sql-region": context.properties["sql-region"],
        "name": context.properties["name"],
        "address": context.properties["address"]}
 

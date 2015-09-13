@@ -33,7 +33,7 @@ resources:
   - type: compute.v1.address
     name: %(name)s
     properties:
-      region: %(region)s
+      region: %(compute-region)s
 """ % {"name": context.env["name"],
-       "region": context.properties["region"]}
+       "compute-region": context.properties["compute-region"]}
 

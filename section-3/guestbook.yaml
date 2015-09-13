@@ -23,7 +23,8 @@ resources:
     type: guestbook.jinja
     properties:
       zone: <your-default-zone>
-      region: <your-default-region>
+      compute-region: <your-default-region>
+      sql-region: <your-sql-region>
       image: guestbook-2
       machine-type: n1-standard-1
       startup-script-url: gs://<startup-scripts-bucket>/guestbook-start.sh
