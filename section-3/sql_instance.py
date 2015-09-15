@@ -33,15 +33,15 @@ resources:
   - type: sqladmin.v1beta4.instance
     name: %(name)s
     properties:
-          region: %(sql-region)s
-          databaseVersion: "MYSQL_5_6"
-          settings:
-            tier: D1
-            ipConfiguration:
-              ipv4Enabled: True
-              authorizedNetworks:
-              - name: guestbook
-                value: %(address)s
+      region: %(sql-region)s
+      databaseVersion: "MYSQL_5_6"
+      settings:
+        tier: D1
+        ipConfiguration:
+          ipv4Enabled: True
+          authorizedNetworks:
+          - name: guestbook
+            value: %(address)s
 """ % {"sql-region": context.properties["sql-region"],
        "name": context.properties["name"],
        "address": context.properties["address"]}
