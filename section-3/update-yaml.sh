@@ -13,10 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+source ~/cpo200/config
+
 sed -i \
 -e s/'<your-default-region>'/$CPO200_REGION/ \
 -e s/'<your-default-zone>'/$CPO200_ZONE/ \
 -e s/'<your-sql-region>'/$CPO200_SQL_REGION/ \
--e s/'guestbook-sql-password>'/$CPO200_SQL_PW/ \
+-e s/'<guestbook-sql-password>'/$CPO200_SQL_PW/ \
 -e s/'<startup-scripts-bucket>'/$CPO200_SCRIPTS_BUCKET/ \
 guestbook.yaml
