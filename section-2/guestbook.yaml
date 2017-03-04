@@ -23,6 +23,7 @@ resources:
       image: guestbook-2
       machine-type: n1-standard-1
       bucket: <startup-scripts-bucket>
-      sql-ip: <guestbook-sql-ip-address>
+      sql-ip: 127.0.0.1
+      connection-name: <guestbook-sql-connection-name>
       password: <guestbook-sql-password>
       nat-ip: <guestbook-external-ip-address>

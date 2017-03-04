@@ -16,8 +16,9 @@
 source ~/cpo200/config
 
 sed -i \
+-e s/'<guestbook-project-id>'/$DEVSHELL_PROJECT_ID/g \
 -e s/'<your-default-zone>'/$CPO200_ZONE/ \
--e s/'<guestbook-sql-ip-address>'/$CPO200_SQL_ADDRESS/ \
+-e s/'<guestbook-sql-connection-name>'/$CPO200_SQL_CONNECTION_NAME/ \
 -e s/'<guestbook-sql-password>'/$CPO200_SQL_PW/ \
 -e s/'<guestbook-external-ip-address>'/$CPO200_GB_DM_IP/ \
 -e s/'<startup-scripts-bucket>'/$CPO200_SCRIPTS_BUCKET/ \
