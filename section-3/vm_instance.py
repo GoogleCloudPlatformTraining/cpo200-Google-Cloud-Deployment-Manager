@@ -42,6 +42,8 @@ resources:
         items:
         - key: sql-ip
           value: %(sql-address)s
+        - key: sql-connection-name
+          value: %(sql-connection-name)s
         - key: sql-pw
           value: %(password)s
         - key: startup-script-url
@@ -63,13 +65,19 @@ resources:
       serviceAccounts:
         - email: default
           scopes:
+           - https://www.googleapis.com/auth/cloud.useraccounts.readonly
            - https://www.googleapis.com/auth/devstorage.read_only
            - https://www.googleapis.com/auth/logging.write
+           - https://www.googleapis.com/auth/monitoring.write
+           - https://www.googleapis.com/auth/service.management.readonly
+           - https://www.googleapis.com/auth/servicecontrol
+           - https://www.googleapis.com/auth/sqlservice.admin  
 """ % {"name": context.env["name"],
        "project": context.env["project"],
        "zone": context.properties["zone"],
        "machine": context.properties["machine"],
        "sql-address": context.properties["sql_ip"],
+       "sql-connection-name": context.properties["sql_connection_name"],
        "password": context.properties["sql_pw"],
        "script": context.properties["startup_script_url"],
        "vm-address": context.properties["nat_IP"],

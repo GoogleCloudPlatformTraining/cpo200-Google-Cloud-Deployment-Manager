@@ -34,14 +34,12 @@ resources:
     name: %(name)s
     properties:
       region: %(sql-region)s
-      databaseVersion: "MYSQL_5_6"
+      databaseVersion: "MYSQL_5_7"
       settings:
-        tier: D1
+        tier: db-n1-standard-1
+        activationPolicy: ALWAYS
         ipConfiguration:
           ipv4Enabled: True
-          authorizedNetworks:
-          - name: guestbook
-            value: %(address)s
 """ % {"sql-region": context.properties["sql-region"],
        "name": context.properties["name"],
        "address": context.properties["address"]}

@@ -22,7 +22,8 @@ resources:
   properties:
     zone: {{ properties["zone"] }}
     machine: {{ properties["machine-type"] }}
-    sql_ip: $(ref.{{ SQL_NAME }}.ipAddresses[0].ipAddress)
+    sql_ip: 127.0.0.1
+    sql_connection_name:  $(ref.{{ SQL_NAME }}.connectionName)
     sql_pw: {{ properties["sql-password"] }}
     startup_script_url: {{ properties["startup-script-url"] }}
     image: {{ properties["image"] }}
