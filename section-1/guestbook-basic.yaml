@@ -24,7 +24,9 @@ resources:
     metadata:
       items:
       - key: sql-ip
-        value: <guestbook-sql-ip-address>
+        value: 127.0.0.1
+      - key: sql-connection-name
+        value: <guestbook-sql-connection-name>
       - key: sql-pw
         value: <guestbook-sql-password>
       - key: startup-script-url
@@ -45,5 +47,10 @@ resources:
     serviceAccounts:
       - email: default
         scopes:
+         - https://www.googleapis.com/auth/cloud.useraccounts.readonly
          - https://www.googleapis.com/auth/devstorage.read_only
          - https://www.googleapis.com/auth/logging.write
+         - https://www.googleapis.com/auth/monitoring.write
+         - https://www.googleapis.com/auth/service.management.readonly
+         - https://www.googleapis.com/auth/servicecontrol
+         - https://www.googleapis.com/auth/sqlservice.admin      
