@@ -16,4 +16,4 @@ gsutil acl ch -u $(gcloud sql instances describe guestbook-3-sql | grep serviceA
 gcloud sql instances import guestbook-3-sql gs://cpo200-sql-migration-$1/backup.sql
 
 # set the password on the Cloud SQL instance
-gcloud sql instances set-root-password guestbook-3-sql --password -e $2
+gcloud sql instances set-root-password guestbook-3-sql --password $2
